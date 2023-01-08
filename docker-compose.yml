@@ -1,0 +1,22 @@
+# docker-compose up -d
+# 推送到docker指令
+version: '3.9'
+services:
+  
+  web1:
+    restart: on-failure
+    build: ./web1
+    ports:
+      - '8082:8082'
+  web2:
+    restart: on-failure
+    build: ./web2
+    ports:
+      - '8080:8080'
+  nginx:
+    build: ./nginx
+    ports:
+    - '80:80'
+    depends_on:
+    - web1
+    
