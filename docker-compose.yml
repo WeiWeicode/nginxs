@@ -13,10 +13,16 @@ services:
     build: ./web2
     ports:
       - '8080:8080'
+  web3:
+    restart: on-failure
+    build: ./web3
+    ports:
+      - '8081:8081'
   nginx:
     build: ./nginx
     ports:
     - '80:80'
     depends_on:
     - web1
+    
     
